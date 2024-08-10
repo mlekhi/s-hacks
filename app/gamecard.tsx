@@ -20,7 +20,7 @@ const GameCard: React.FC<GameCardProps> = ({ card }) => {
   if (device === 'text') {
     imageUri = 'https://i.imgur.com/EHqIgPE.png'; // Example URL for text messages
   } else if (device === 'call') {
-    imageUri = 'https://i.imgur.com/callImage.png'; // Replace with actual URL for calls
+    imageUri = 'https://i.imgur.com/WEMHsem.png'; // Replace with actual URL for calls
   } else {
     imageUri = 'https://i.imgur.com/1NFztJw.png'; // Default URL for email
   }
@@ -65,23 +65,29 @@ const styles = StyleSheet.create({
   },
   callContent: {
     color: '#000000',
-    top: -200,
-    padding: 20
+    position: 'absolute', 
+    width: 270,
+    left: 45,
+    top: 60
   },
   emailContent: {
     color: '#000000',
+    position: 'absolute', 
+    width: 250,
+    left: 60,
+    top: 215
   },
   callText: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 22,
+    fontWeight: '500',
   },
   textText: {
     fontSize: 16,
     fontWeight: '400',
   },
   emailText: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: '400',
   }
 });
 
