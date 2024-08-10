@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, StyleSheet, View, Text, Button } from 'react-native';
+import { Animated, StyleSheet, View, Text, Button } from 'react-native';
 import Swiper from 'react-native-deck-swiper';
 import GameCard from '../gamecard';
+import InfoCard from '../infocard';
 
 const Game = () => {
   const initialGameData = [
@@ -259,8 +260,10 @@ const shuffleArray = (array) => {
   const shuffledData = shuffleArray([...initialGameData]); // Shuffle and reset game data
   const [gameData, setGameData] = useState(shuffledData);
   const [points, setPoints] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(10);
+  const [timeLeft, setTimeLeft] = useState(60);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [isCorrectSwipe, setIsCorrectSwipe] = useState(null);
+  const [currentCardIndex, setCurrentCardIndex] = useState(false);
 
   useEffect(() => {
     if (timeLeft <= 0) {
@@ -278,27 +281,30 @@ const shuffleArray = (array) => {
     if (isGameOver) return; // Prevent swipes if game is over
 
     const card = gameData[cardIndex];
-    const isCorrectSwipe = (direction === 'right' && card.answer === true) || (direction === 'left' && card.answer === false);
+    const correctSwipe = (direction === 'right' && card.answer === true) || (direction === 'left' && card.answer === false);
 
-    if (isCorrectSwipe) {
+    if (correctSwipe) {
       setPoints(prevPoints => prevPoints + 10); // Award 10 points for correct answer
     } else {
       setPoints(prevPoints => prevPoints - 5); // Deduct 5 points for wrong answer
     }
+    setIsCorrectSwipe(correctSwipe);
+    setCurrentCardIndex(prevIndex => prevIndex + 2);
 
     console.log(`Swiped card at index ${cardIndex}, Direction: ${direction}`);
   };
+
 
   const restartGame = () => {
     const shuffledData = shuffleArray([...initialGameData]); // Shuffle and reset game data
     setGameData(shuffledData); // Reset game data
     setPoints(0); // Reset points
-    setTimeLeft(10); // Reset timer
+    setTimeLeft(60); // Reset timer
     setIsGameOver(false); // Reset game over state
   };
-
+  
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Text style={styles.timer}>Time Left: {timeLeft}s</Text>
       <Text style={styles.points}>Points: {points}</Text>
       {isGameOver ? (
@@ -313,6 +319,14 @@ const shuffleArray = (array) => {
           renderCard={(card) => <GameCard card={card} />}
           onSwipedLeft={(cardIndex) => handleSwipe(cardIndex, 'left')}
           onSwipedRight={(cardIndex) => handleSwipe(cardIndex, 'right')}
+          stackSize={3}
+          cardIndex={0}
+          backgroundColor={'#f0f0f0'}
+          verticalSwipe={false}
+        />
+        <Swiper
+          cards={gameData}
+          renderCard={(card) => <InfoCard card={card} isCorrectSwipe={isCorrectSwipe} />}
           stackSize={3}
           cardIndex={0}
           backgroundColor={'#f0f0f0'}
