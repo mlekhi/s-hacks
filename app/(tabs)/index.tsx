@@ -5,6 +5,7 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
+
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
@@ -20,32 +21,38 @@ export default function HomeScreen() {
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+        <ThemedText type="subtitle">
+          Objective:
+        </ThemedText>
         <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
+          As a detective, your mission is to uncover fraud. Swipe left if you think it's a fraudulent scheme, or swipe right if you believe it's a legitimate offer. Trust your instincts and your training!
         </ThemedText>
       </ThemedView>
+
+      <ThemedView>
+        <ThemedText type="subtitle">
+          Rules:
+        </ThemedText>
+        <ThemedText>
+          1. <ThemedText type="defaultSemiBold">Swipe Decisions:</ThemedText> You’ll encounter various scenarios. Use your keen detective skills to determine if it’s a fraud or not.
+          {"\n"}
+          2. <ThemedText type="defaultSemiBold">Time Limit:</ThemedText> You have just 10 seconds to make each call. Act swiftly to avoid getting caught in the scammer’s web!
+          {"\n"}
+          3. <ThemedText type="defaultSemiBold">Scoring:</ThemedText> Earn points for accurate and quick judgments. The better your decisions, the higher your score on the fraud detection leaderboard!
+        </ThemedText>
+      </ThemedView>
+
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
+        <ThemedText type="subtitle">
+          Scene Points: Getting a Fresh Start
+        </ThemedText>
         <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
+          As a top detective, staying sharp is crucial. To earn additional scene points, you need to maintain a fresh perspective by resetting your investigation environment. Here’s how you can do it:
+          {"\n"}
+          Earn Scene Points: Successfully executing this reset process not only refreshes your game environment but also awards you extra scene points. Use these points to track your progress and unlock special detective tools for your next investigation.
         </ThemedText>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
+
     </ParallaxScrollView>
   );
 }
