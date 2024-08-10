@@ -1,15 +1,23 @@
-import { StyleSheet, View, Text, Image } from 'react-native';
+  import { StyleSheet, View, Text, Image } from 'react-native';
+  import ParallaxScrollView from '@/components/ParallaxScrollView';
 
-export default function RewardsScreen() {
-  const points = 520;
+  export default function RewardsScreen() {
+    const points = 520;
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.scenePointsContainer}>
+    return (
+      <ParallaxScrollView
+              headerBackgroundColor='#ffffff'
+        headerImage={
+          <Image
+            source={require('@/assets/images/points.png')}
+          />
+        }>
+
+      {/* <View style={styles.scenePointsContainer}>
         <Text style={styles.sceneYear}>2005</Text>
         <Text style={styles.scenePoints}>Scene Points</Text>
       </View>
-
+ */}
       <View style={styles.header}>
         <Text style={styles.name}>Hi Alex</Text>
         <Text style={styles.points}>Redeem Your Points Below</Text>
@@ -47,7 +55,7 @@ export default function RewardsScreen() {
           <Text style={styles.rewardText}>$50 Shopping Voucher</Text>
         </View>
       </View>
-    </View>
+    </ParallaxScrollView>
   );
 }
 
@@ -81,12 +89,10 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    marginBottom: 20,
     backgroundColor: '#D72B30',
     paddingVertical: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
     width: '100%',
+    borderRadius: 10,
   },
   name: {
     fontSize: 24,
@@ -105,23 +111,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    width: '90%',
-    backgroundColor: '#FFFFFF',
-    padding: 16,
-    marginTop: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 3,
   },
   rewardItem: {
-    width: '45%',
+    width: '47%',
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
-    padding: 10,
+    padding: 20,
     marginVertical: 8,
     borderRadius: 8,
     shadowColor: '#000',
