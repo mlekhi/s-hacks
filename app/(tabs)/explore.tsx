@@ -1,102 +1,150 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, Image, Platform } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+export default function RewardsScreen() {
+  const points = 520;
 
-export default function TabTwoScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={<Ionicons size={310} name="code-slash" style={styles.headerImage} />}>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user's current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText> library
-          to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+    <View style={styles.container}>
+      <View style={styles.scenePointsContainer}>
+        <Text style={styles.sceneYear}>2005</Text>
+        <Text style={styles.scenePoints}>Scene Points</Text>
+      </View>
+
+      <View style={styles.header}>
+        <Text style={styles.name}>Hi Alex</Text>
+        <Text style={styles.points}>Redeem Your Points Below</Text>
+      </View>
+
+      <View style={styles.rewardsGrid}>
+        <View style={styles.rewardItem}>
+          <Image source={require('@/assets/images/reward2.png')} style={styles.rewardIcon} />
+          <Text style={styles.rewardPoints}>500 Points</Text>
+          <Text style={styles.rewardText}>Free Movie Ticket</Text>
+        </View>
+        <View style={styles.rewardItem}>
+          <Image source={require('@/assets/images/reward2.png')} style={styles.rewardIcon} />
+          <Text style={styles.rewardPoints}>1000 Points</Text>
+          <Text style={styles.rewardText}>$10 Cineplex Gift Card</Text>
+        </View>
+        <View style={styles.rewardItem}>
+          <Image source={require('@/assets/images/reward2.png')} style={styles.rewardIcon} />
+          <Text style={styles.rewardPoints}>1500 Points</Text>
+          <Text style={styles.rewardText}>Popcorn and Drink Combo</Text>
+        </View>
+        <View style={styles.rewardItem}>
+          <Image source={require('@/assets/images/reward2.png')} style={styles.rewardIcon} />
+          <Text style={styles.rewardPoints}>2000 Points</Text>
+          <Text style={styles.rewardText}>Two Free Movie Tickets</Text>
+        </View>
+        <View style={styles.rewardItem}>
+          <Image source={require('@/assets/images/reward2.png')} style={styles.rewardIcon} />
+          <Text style={styles.rewardPoints}>2500 Points</Text>
+          <Text style={styles.rewardText}>$25 Restaurant Gift Card</Text>
+        </View>
+        <View style={styles.rewardItem}>
+          <Image source={require('@/assets/images/reward2.png')} style={styles.rewardIcon} />
+          <Text style={styles.rewardPoints}>5000 Points</Text>
+          <Text style={styles.rewardText}>$50 Shopping Voucher</Text>
+        </View>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
-  titleContainer: {
+  scenePointsContainer: {
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  sceneYear: {
+    fontSize: 60,
+    color: '#D72B30',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  scenePoints: {
+    fontSize: 25,
+    color: '#D72B30',
+    textAlign: 'center',
+  },
+  banner: {
+    width: '100%',
+    height: 150,
+    resizeMode: 'cover',
+    marginBottom: 20,
+  },
+  header: {
+    alignItems: 'center',
+    marginBottom: 20,
+    backgroundColor: '#D72B30',
+    paddingVertical: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    width: '100%',
+  },
+  name: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+  },
+  points: {
+    fontSize: 18,
+    marginTop: 5,
+    color: '#FFFFFF',
+  },
+  bold: {
+    fontWeight: 'bold',
+  },
+  rewardsGrid: {
     flexDirection: 'row',
-    gap: 8,
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    width: '90%',
+    backgroundColor: '#FFFFFF',
+    padding: 16,
+    marginTop: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
+  },
+  rewardItem: {
+    width: '45%',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    padding: 10,
+    marginVertical: 8,
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
+  },
+  rewardIcon: {
+    width: 50,
+    height: 50,
+    marginBottom: 10,
+    resizeMode: 'contain',
+  },
+  rewardPoints: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#D72B30',
+    marginBottom: 5,
+  },
+  rewardText: {
+    fontSize: 14,
+    textAlign: 'center',
+    color: '#00234D',
   },
 });
