@@ -20,7 +20,7 @@ const Game = () => {
         "scam-text": "Scotiabank Notice: We detected unusual activity on your account. Please call us at 1-800-SCOTIA immediately to verify.",
         "answer": false,
         "device": "text",
-        "info": "This message is not a scam. The phone number provided is a legitimate contact number for Scotiabank. Always verify by calling the official bank number found on their website."
+        "info": "This message is not a scam because the phone number provided is a legitimate contact number for Scotiabank. Always verify by calling the official bank number found on their website."
     },
     {
         "scam-contact": "scotiabank-rewards.com",
@@ -44,7 +44,7 @@ const Game = () => {
         "scam-text": "Scotiabank Alert: Your account is approaching its overdraft limit. Please deposit funds to avoid fees.",
         "answer": false,
         "device": "text",
-        "info": "This message is not a scam. The message does not ask for any sensitive information and provides a valid phone number. However, it's always good to verify by checking your account directly."
+        "info": "This message is not a scam because the message does not ask for any sensitive information and provides a valid phone number. However, it's always good to verify by checking your account directly."
     },
     {
         "scam-contact": "scotiabank-fraud.com",
@@ -68,7 +68,7 @@ const Game = () => {
         "scam-text": "Alex, your account is scheduled for maintenance. Please ensure all transactions are completed today to avoid delays.",
         "answer": false,
         "device": "text",
-        "info": "This is not a scam. Banks often notify customers about scheduled maintenance. The message does not request any sensitive information."
+        "info": "This is not a scam because banks often notify customers about scheduled maintenance. The message does not request any sensitive information."
     },
     {
         "scam-contact": "scotiabank-delivery.com",
@@ -84,7 +84,7 @@ const Game = () => {
         "scam-text": "Scotiabank: Important changes are being made to your account. Please call us at 1-800-SCOTIA for details.",
         "answer": false,
         "device": "text",
-        "info": "This is not a scam. The message directs you to contact the official Scotiabank support line. However, it's always a good idea to verify by checking your account directly."
+        "info": "This is not a scam because the message directs you to contact the official Scotiabank support line. However, it's always a good idea to verify by checking your account directly."
     },
     {
         "scam-contact": "scotiabank-alert.com",
@@ -100,7 +100,7 @@ const Game = () => {
         "scam-text": "Your latest bank statement is available online. Please log in to your account to view the details. If you encounter any issues, please contact our support team.",
         "answer": false,
         "device": "email",
-        "info": "This is not a scam. The email comes from a legitimate Scotiabank address and does not ask for sensitive information or include suspicious links. Always verify the sender's email address."
+        "info": "This is not a scam because the email comes from a legitimate Scotiabank address and does not ask for sensitive information or include suspicious links. Always verify the sender's email address."
     },
     {
         "scam-contact": "scotiabank-payment.com",
@@ -124,7 +124,7 @@ const Game = () => {
         "scam-text": "Due to recent updates, we need you to update your account information. You can do this by logging into your account or visiting a branch.",
         "answer": false,
         "device": "email",
-        "info": "This is not a scam. The email is from a legitimate Scotiabank address, and the update request is standard practice. Always log in through the official website or app to perform updates."
+        "info": "This is not a scam because the email is from a legitimate Scotiabank address, and the update request is standard practice. Always log in through the official website or app to perform updates."
     },
     {
         "scam-contact": "scotiabank-spending.com",
@@ -140,7 +140,7 @@ const Game = () => {
         "scam-text": "A transaction of $1,500.00 is pending on your account. Please review it in your online banking portal. If you did not authorize this, contact us immediately or visit scotiabank-confirm.com.",
         "answer": true,
         "device": "email",
-        "info": "This is a scam. The message includes a suspicious link and creates a false sense of urgency. Always check your transactions through the official banking app or website."
+        "info": "This is a scam because the message includes a suspicious link and creates a false sense of urgency. Always check your transactions through the official banking app or website."
     },
     {
         "scam-contact": "1-800-472-6842",
@@ -148,7 +148,7 @@ const Game = () => {
         "scam-text": "We've detected suspicious activity in your account. Please review your recent transactions by logging in to your account or contacting our security team.",
         "answer": false,
         "device": "email",
-        "info": "This is not a scam. The email provides a valid phone number and asks you to check your account through official channels. Always verify by contacting the bank directly."
+        "info": "This is not a scam because the email provides a valid phone number and asks you to check your account through official channels. Always verify by contacting the bank directly."
     },
     {
         "scam-contact": "scotiabank-prize.com",
@@ -164,7 +164,7 @@ const Game = () => {
         "scam-text": "This is Scotiabank calling to inform you of suspicious activity on your account. Please press 1 to speak with a representative and secure your account immediately.",
         "answer": true,
         "device": "call",
-        "info": "This call is a scam. Banks typically do not ask you to press a button to secure your account. They would ask you to contact them directly through their official number."
+        "info": "This call is a scam because banks typically do not ask you to press a button to secure your account. They would ask you to contact them directly through their official number."
     },
     {
         "scam-contact": "1-800-SCOTIA",
@@ -172,7 +172,7 @@ const Game = () => {
         "scam-text": "Hello Alex, this is Scotiabank. We are calling to confirm a recent transaction of $1,200. If you did not authorize this, please visit your nearest branch.",
         "answer": false,
         "device": "call",
-        "info": "This call is not a scam. It provides the official Scotiabank contact number and asks you to take action by visiting a branch, not by providing information over the phone."
+        "info": "This call is not a scam because it provides the official Scotiabank contact number and asks you to take action by visiting a branch, not by providing information over the phone."
     },
     {
         "scam-contact": "Unknown Caller",
@@ -180,7 +180,7 @@ const Game = () => {
         "scam-text": "This is Scotiabank. We need to verify your account information to process a pending transaction. Please provide your account number and PIN.",
         "answer": true,
         "device": "call",
-        "info": "This call is a scam. Banks will never ask you to provide your PIN or full account number over the phone. Always hang up and contact the bank directly using their official number."
+        "info": "This call is a scam because banks will never ask you to provide your PIN or full account number over the phone. Always hang up and contact the bank directly using their official number."
     },
     {
         "scam-contact": "1-800-472-6842",
@@ -188,7 +188,7 @@ const Game = () => {
         "scam-text": "Hello, this is Scotiabank. We noticed some unusual activity on your account and wanted to confirm it with you. Please call us back at 1-800-472-6842 if you have any concerns.",
         "answer": false,
         "device": "call",
-        "info": "This call is not a scam. It provides a valid contact number and does not ask for sensitive information directly. Always verify by calling the official number provided."
+        "info": "This call is not a scam because it provides a valid contact number and does not ask for sensitive information directly. Always verify by calling the official number provided."
     },
     {
         "scam-contact": "Unknown Caller",
@@ -196,7 +196,7 @@ const Game = () => {
         "scam-text": "Scotiabank is updating its security systems. To keep your account safe, please provide your security answers and password over the phone.",
         "answer": true,
         "device": "call",
-        "info": "This call is a scam. Banks will never ask for your password or security answers over the phone. Always refuse to provide such information and report the call to your bank."
+        "info": "This call is a scam because banks will never ask for your password or security answers over the phone. Always refuse to provide such information and report the call to your bank."
     },
     {
         "scam-contact": "1-800-SCOTIA",
@@ -204,12 +204,12 @@ const Game = () => {
         "scam-text": "Hello, this is Scotiabank. We just wanted to let you know about some updates to your account. No action is needed from your side at this time.",
         "answer": false,
         "device": "call",
-        "info": "This call is not a scam. It is simply an informational call that does not ask for any sensitive information or immediate action."
+        "info": "This call is not a scam because it is simply an informational call that does not ask for any sensitive information or immediate action."
     },
     {
         "scam-contact": "Unknown Caller",
         "scam-subject": "",
-        "scam-text": "This is Scotiabank. Your account has been locked due to suspicious activity. Please press 2 to unlock your account.",
+        "scam-text": "This is Scotiabank because your account has been locked due to suspicious activity. Please press 2 to unlock your account.",
         "answer": true,
         "device": "call",
         "info": "This call is a scam. Legitimate banks do not ask you to press buttons during an automated call to unlock accounts. Always contact the bank directly through their official number."
@@ -220,7 +220,7 @@ const Game = () => {
         "scam-text": "Hello, this is Scotiabank calling to notify you of some recent activity on your account. Please review your recent transactions at your earliest convenience.",
         "answer": false,
         "device": "call",
-        "info": "This call is not a scam. It is a courtesy call that provides a legitimate contact number and does not ask for sensitive information."
+        "info": "This call is not a scam because it is a courtesy call that provides a legitimate contact number and does not ask for sensitive information."
     },
     {
         "scam-contact": "Unknown Caller",
@@ -228,7 +228,7 @@ const Game = () => {
         "scam-text": "This is Scotiabank. We need to update your account information. Please provide your date of birth and Social Insurance Number to proceed.",
         "answer": true,
         "device": "call",
-        "info": "This call is a scam. Banks will never ask for your Social Insurance Number or other sensitive personal information over the phone. Always refuse and report the call."
+        "info": "This call is a scam because banks will never ask for your Social Insurance Number or other sensitive personal information over the phone. Always refuse and report the call."
     },
     {
         "scam-contact": "1-800-SCOTIA",
@@ -236,7 +236,7 @@ const Game = () => {
         "scam-text": "Hello Alex, this is Scotiabank. We noticed a large withdrawal from your account. If you did not authorize this, please visit your nearest branch to secure your account.",
         "answer": false,
         "device": "call",
-        "info": "This call is not a scam. It provides the official Scotiabank contact number and asks you to take action by visiting a branch, not by providing information over the phone."
+        "info": "This call is not a scam because it provides the official Scotiabank contact number and asks you to take action by visiting a branch, not by providing information over the phone."
     }
 ];
 
