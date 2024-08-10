@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { TouchableOpacity, StyleSheet, View, Text, Button } from 'react-native';
 import Swiper from 'react-native-deck-swiper';
 import GameCard from '../gamecard';
 
@@ -119,7 +119,7 @@ const Game = () => {
     },
     {
         "scam-contact": "info@scotiabank.com",
-        "scam-subject": "Important: Update Required to Continue Using Your Scotiabank Account",
+        "scam-subject": "Important: Update Required to Continue Using Your Account",
         "scam-text": "Due to recent updates, we need you to update your account information. You can do this by logging into your account or visiting a branch.",
         "answer": false,
         "device": "email",
@@ -239,9 +239,27 @@ const Game = () => {
     }
 ];
 
-  const [gameData, setGameData] = useState(initialGameData);
+
+const shuffleArray = (array) => {
+  let currentIndex = array.length, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (currentIndex !== 0) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+};
+  
+  const shuffledData = shuffleArray([...initialGameData]); // Shuffle and reset game data
+  const [gameData, setGameData] = useState(shuffledData);
   const [points, setPoints] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(10);
   const [isGameOver, setIsGameOver] = useState(false);
 
   useEffect(() => {
@@ -272,9 +290,10 @@ const Game = () => {
   };
 
   const restartGame = () => {
-    setGameData(initialGameData); // Reset game data
+    const shuffledData = shuffleArray([...initialGameData]); // Shuffle and reset game data
+    setGameData(shuffledData); // Reset game data
     setPoints(0); // Reset points
-    setTimeLeft(60); // Reset timer
+    setTimeLeft(10); // Reset timer
     setIsGameOver(false); // Reset game over state
   };
 
@@ -288,6 +307,7 @@ const Game = () => {
           <Button title="Restart Game" onPress={restartGame} />
         </View>
       ) : (
+      <View style={styles.swiperContainer}>
         <Swiper
           cards={gameData}
           renderCard={(card) => <GameCard card={card} />}
@@ -298,12 +318,18 @@ const Game = () => {
           backgroundColor={'#f0f0f0'}
           verticalSwipe={false}
         />
+        </View>
       )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  swiperContainer: {
+    position: 'absolute',
+    top: 25,
+    left: 0,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',

@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, ImageBackground } from 'react-native';
 interface GameCardProps {
   card: {
     scamContact: string;  // Ensure the key matches your data structure
-    scamSubject?: string; // Optional, can be empty
+    scamSubject: string; // Optional, can be empty
     scamText: string;
     answer: boolean;
     device: string;
@@ -14,13 +14,18 @@ interface GameCardProps {
 
 const GameCard: React.FC<GameCardProps> = ({ card }) => {
   const scamText = card['scam-text'] as string;
+  const scamSubject = card['scam-subject'] as string;
+  const scamContact = card['scam-contact'] as string;
   const device = card.device as string;
+  console.log('Scam Subject:', scamSubject);
+  console.log('Scam Contact:', scamContact);
+  console.log('Scam device:', device);
 
   // Dynamically choose the image based on the device type
   if (device === 'text') {
     imageUri = 'https://i.imgur.com/EHqIgPE.png'; // Example URL for text messages
   } else if (device === 'call') {
-    imageUri = 'https://i.imgur.com/WEMHsem.png'; // Replace with actual URL for calls
+    imageUri = 'https://i.imgur.com/pjKs2h7.png'; // Replace with actual URL for calls
   } else {
     imageUri = 'https://i.imgur.com/1NFztJw.png'; // Default URL for email
   }
@@ -38,6 +43,12 @@ const GameCard: React.FC<GameCardProps> = ({ card }) => {
         ]}>
           {scamText}
         </Text>
+        {device === 'email' && (
+          <Text style={styles.additionalText}>{scamSubject}</Text>
+        )}
+        {device === 'email' && (
+          <Text style={styles.additionalText2}>{scamContact}</Text>
+        )}
       </View>
     </ImageBackground>
   );
@@ -49,9 +60,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: '#dddddd',
     backgroundColor: '#d92a11',
     borderRadius: 15,
+        shadowColor: '#000', // Shadow color
+    shadowOffset: { width: 0, height: 4 }, // Offset of the shadow
+    shadowOpacity: 0.4, // Shadow opacity
+    shadowRadius: 4, // Shadow blur radius
+
   },
   textContent: {
     color: '#000000',
@@ -66,9 +81,9 @@ const styles = StyleSheet.create({
   callContent: {
     color: '#000000',
     position: 'absolute', 
-    width: 270,
-    left: 45,
-    top: 60
+    width: 260,
+    left: 50,
+    top: 110
   },
   emailContent: {
     color: '#000000',
@@ -88,6 +103,21 @@ const styles = StyleSheet.create({
   emailText: {
     fontSize: 16,
     fontWeight: '400',
+  },
+  additionalText: {
+    fontSize: 14,
+    color: '#000000',
+    position: 'absolute', 
+    top: -90,
+    width: 230
+  },
+  additionalText2: {
+    fontSize: 12,
+    color: '#000000',
+    position: 'absolute', 
+    top: -45,
+    width: 230,
+    left: 35
   }
 });
 
