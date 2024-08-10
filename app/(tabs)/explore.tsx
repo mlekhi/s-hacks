@@ -25,32 +25,32 @@
 
       <View style={styles.rewardsGrid}>
         <View style={styles.rewardItem}>
-          <Image source={require('@/assets/images/reward2.png')} style={styles.rewardIcon} />
+          <Image source={require('@/assets/images/ticket.png')} style={styles.rewardIcon} />
           <Text style={styles.rewardPoints}>500 Points</Text>
           <Text style={styles.rewardText}>Free Movie Ticket</Text>
         </View>
         <View style={styles.rewardItem}>
-          <Image source={require('@/assets/images/reward2.png')} style={styles.rewardIcon} />
+          <Image source={require('@/assets/images/giftcard.png')} style={styles.rewardIcon} />
           <Text style={styles.rewardPoints}>1000 Points</Text>
           <Text style={styles.rewardText}>$10 Cineplex Gift Card</Text>
         </View>
         <View style={styles.rewardItem}>
-          <Image source={require('@/assets/images/reward2.png')} style={styles.rewardIcon} />
+          <Image source={require('@/assets/images/popcorn.png')} style={styles.rewardIcon} />
           <Text style={styles.rewardPoints}>1500 Points</Text>
           <Text style={styles.rewardText}>Popcorn and Drink Combo</Text>
         </View>
         <View style={styles.rewardItem}>
-          <Image source={require('@/assets/images/reward2.png')} style={styles.rewardIcon} />
+          <Image source={require('@/assets/images/tickets.png')} style={styles.rewardIcon} />
           <Text style={styles.rewardPoints}>2000 Points</Text>
           <Text style={styles.rewardText}>Two Free Movie Tickets</Text>
         </View>
         <View style={styles.rewardItem}>
-          <Image source={require('@/assets/images/reward2.png')} style={styles.rewardIcon} />
+          <Image source={require('@/assets/images/restaurant.png')} style={styles.rewardIcon} />
           <Text style={styles.rewardPoints}>2500 Points</Text>
           <Text style={styles.rewardText}>$25 Restaurant Gift Card</Text>
         </View>
         <View style={styles.rewardItem}>
-          <Image source={require('@/assets/images/reward2.png')} style={styles.rewardIcon} />
+          <Image source={require('@/assets/images/fifty.png')} style={styles.rewardIcon} />
           <Text style={styles.rewardPoints}>5000 Points</Text>
           <Text style={styles.rewardText}>$50 Shopping Voucher</Text>
         </View>
