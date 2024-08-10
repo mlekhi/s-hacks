@@ -5,7 +5,7 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Image source={require('@/assets/images/logo.png')} style={styles.logo} />
-      <Text style={styles.text}>Swipe Right if it's a Fraud, Swipe Left for Safe.</Text>
+      <Text style={styles.text}>Swipe Left on Frauds. {'\n'}Swipe Right for Safe.</Text>
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Get Started</Text>
       </TouchableOpacity>
@@ -21,14 +21,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: 200,  // Increased size
-    height: 200,  // Increased size
+    width: 300,  // Increased size
+    height: 300,  // Increased size
     marginBottom: 50,
   },
   text: {
     color: '#fff',
-    fontSize: 28,  // Increased size
-    fontWeight: 'bold',  // Made text bold
+    fontSize: 24,  // Increased size
+    fontWeight: '600',  // Made text bold
     textAlign: 'center',
     marginBottom: 30,
   },
