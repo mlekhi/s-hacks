@@ -6,239 +6,240 @@ import InfoCard from '../infocard';
 
 const Game = () => {
   const initialGameData = [
-        {
+    {
         "scam-contact": "scotiabank-etfr.com",
         "scam-subject": "",
-        "scam-text": "Alex, your Scotiabank e-Transfer of $500 was not completed. To retry, visit: scotiabank-etfr.com.",
+        "scam-text": "Alex, tu transferencia electrónica de Scotiabank de $500 no se completó. Para volver a intentarlo, visita: scotiabank-etfr.com.",
         "answer": true,
         "device": "text",
-        "info": "This message is a scam because the link is suspicious and not a legitimate Scotiabank URL. Always verify the domain name and never click on unfamiliar links."
+        "info": "Este mensaje es una estafa porque el enlace es sospechoso y no es un URL legítimo de Scotiabank. Siempre verifica el nombre de dominio y nunca hagas clic en enlaces desconocidos."
     },
     {
         "scam-contact": "1-800-SCOTIA",
         "scam-subject": "",
-        "scam-text": "Scotiabank Notice: We detected unusual activity on your account. Please call us at 1-800-SCOTIA immediately to verify.",
+        "scam-text": "Aviso de Scotiabank: Detectamos actividad inusual en tu cuenta. Por favor, llámanos al 1-800-SCOTIA inmediatamente para verificar.",
         "answer": false,
         "device": "text",
-        "info": "This message is not a scam because the phone number provided is a legitimate contact number for Scotiabank. Always verify by calling the official bank number found on their website."
+        "info": "Este mensaje no es una estafa. El número de teléfono proporcionado es un número de contacto legítimo de Scotiabank. Siempre verifica llamando al número oficial del banco que se encuentra en su sitio web."
     },
     {
         "scam-contact": "scotiabank-rewards.com",
         "scam-subject": "",
-        "scam-text": "Alex, your Scotiabank account benefits are expiring soon. Renew them now to keep your rewards: scotiabank-rewards.com.",
+        "scam-text": "Alex, los beneficios de tu cuenta de Scotiabank están por expirar. Renuévalos ahora para mantener tus recompensas: scotiabank-rewards.com.",
         "answer": true,
         "device": "text",
-        "info": "This message is a scam because it pressures the recipient to take immediate action with an unfamiliar link. Real rewards programs typically do not expire suddenly and would direct you to their official website."
+        "info": "Este mensaje es una estafa porque presiona al destinatario para que tome acción inmediata con un enlace desconocido. Los programas de recompensas reales generalmente no expiran repentinamente y te dirigirían a su sitio web oficial."
     },
     {
         "scam-contact": "scotiabank-security.com",
         "scam-subject": "",
-        "scam-text": "ALERT: Scotiabank security update required. Failure to do so may result in limited access to your account: scotiabank-security.com.",
+        "scam-text": "ALERTA: Se requiere una actualización de seguridad de Scotiabank. Si no lo haces, podrías tener acceso limitado a tu cuenta: scotiabank-security.com.",
         "answer": true,
         "device": "text",
-        "info": "This message is a scam because it asks for an update through a suspicious link. Banks do not ask for security updates via email or text. Always use the official banking app or website."
+        "info": "Este mensaje es una estafa porque pide una actualización a través de un enlace sospechoso. Los bancos no piden actualizaciones de seguridad por correo electrónico o mensaje de texto. Siempre usa la aplicación o sitio web oficial del banco."
     },
     {
         "scam-contact": "1-800-472-6842",
         "scam-subject": "",
-        "scam-text": "Scotiabank Alert: Your account is approaching its overdraft limit. Please deposit funds to avoid fees.",
+        "scam-text": "Alerta de Scotiabank: Tu cuenta está llegando a su límite de sobregiro. Por favor deposita fondos para evitar tarifas.",
         "answer": false,
         "device": "text",
-        "info": "This message is not a scam because the message does not ask for any sensitive information and provides a valid phone number. However, it's always good to verify by checking your account directly."
+        "info": "Este mensaje no es una estafa. El mensaje no pide ninguna información sensible y proporciona un número de teléfono válido. Sin embargo, siempre es bueno verificar revisando directamente tu cuenta."
     },
     {
         "scam-contact": "scotiabank-fraud.com",
         "scam-subject": "",
-        "scam-text": "Dear Alex, an unauthorized purchase was made on your Scotiabank credit card. Please visit scotiabank-fraud.com to report it immediately.",
+        "scam-text": "Estimado Alex, se realizó una compra no autorizada en tu tarjeta de crédito de Scotiabank. Por favor, visita scotiabank-fraud.com para reportarlo de inmediato.",
         "answer": true,
         "device": "text",
-        "info": "This is a scam because it directs you to a suspicious website. Banks would not ask you to report fraud through a non-official link. Instead, they would provide direct contact instructions."
+        "info": "Esto es una estafa porque te dirige a un sitio web sospechoso. Los bancos no te pedirían reportar un fraude a través de un enlace no oficial. En su lugar, proporcionarían instrucciones de contacto directo."
     },
     {
         "scam-contact": "scotiabank-settings.com",
         "scam-subject": "",
-        "scam-text": "Dear Alex, your Scotiabank account security settings have been updated. If this wasn’t you, please visit scotiabank-settings.com to review.",
+        "scam-text": "Estimado Alex, se han actualizado las configuraciones de seguridad de tu cuenta de Scotiabank. Si no fuiste tú, por favor visita scotiabank-settings.com para revisarlo.",
         "answer": true,
         "device": "text",
-        "info": "This is a scam because the message directs you to a suspicious link. Scotiabank would notify you of security updates via the official banking app or website."
+        "info": "Esto es una estafa porque el mensaje te dirige a un enlace sospechoso. Scotiabank te notificaría sobre actualizaciones de seguridad a través de la aplicación oficial del banco o su sitio web."
     },
     {
         "scam-contact": "1-800-SCOTIA",
         "scam-subject": "",
-        "scam-text": "Alex, your account is scheduled for maintenance. Please ensure all transactions are completed today to avoid delays.",
+        "scam-text": "Alex, tu cuenta está programada para mantenimiento. Por favor, asegúrate de completar todas las transacciones hoy para evitar retrasos.",
         "answer": false,
         "device": "text",
-        "info": "This is not a scam because banks often notify customers about scheduled maintenance. The message does not request any sensitive information."
+        "info": "Esto no es una estafa. Los bancos a menudo notifican a los clientes sobre mantenimiento programado. El mensaje no solicita ninguna información sensible."
     },
     {
         "scam-contact": "scotiabank-delivery.com",
         "scam-subject": "",
-        "scam-text": "We tried to deliver your package, but it is currently on hold. Please confirm your delivery address at scotiabank-delivery.com to receive your package.",
+        "scam-text": "Intentamos entregar tu paquete, pero actualmente está en espera. Por favor, confirma tu dirección de entrega en scotiabank-delivery.com para recibir tu paquete.",
         "answer": true,
         "device": "text",
-        "info": "This message is a scam because banks typically do not manage delivery services. The link provided is suspicious and likely designed to steal personal information."
+        "info": "Este mensaje es una estafa porque los bancos generalmente no gestionan servicios de entrega. El enlace proporcionado es sospechoso y probablemente diseñado para robar información personal."
     },
     {
         "scam-contact": "1-800-SCOTIA",
         "scam-subject": "",
-        "scam-text": "Scotiabank: Important changes are being made to your account. Please call us at 1-800-SCOTIA for details.",
+        "scam-text": "Scotiabank: Se están realizando cambios importantes en tu cuenta. Por favor, llámanos al 1-800-SCOTIA para obtener más detalles.",
         "answer": false,
         "device": "text",
-        "info": "This is not a scam because the message directs you to contact the official Scotiabank support line. However, it's always a good idea to verify by checking your account directly."
+        "info": "Esto no es una estafa. El mensaje te dirige a contactar con la línea de soporte oficial de Scotiabank. Sin embargo, siempre es una buena idea verificar revisando directamente tu cuenta."
     },
     {
         "scam-contact": "scotiabank-alert.com",
-        "scam-subject": "Your Account Has Been Compromised",
-        "scam-text": "We've detected unusual activity on your account. Please review your recent transactions. If you see anything suspicious, visit scotiabank-alert.com.",
+        "scam-subject": "Tu cuenta ha sido comprometida",
+        "scam-text": "Hemos detectado actividad inusual en tu cuenta. Por favor revisa tus transacciones recientes. Si ves algo sospechoso, visita scotiabank-alert.com.",
         "answer": true,
         "device": "email",
-        "info": "This email is a scam because it directs you to a suspicious link instead of advising you to contact the bank through official channels. Always verify any account activity directly through the official website or app."
+        "info": "Este correo electrónico es una estafa porque te dirige a un enlace sospechoso en lugar de aconsejarte contactar al banco a través de canales oficiales. Siempre verifica cualquier actividad de cuenta directamente a través del sitio web o la aplicación oficial."
     },
     {
         "scam-contact": "info@scotiabank.com",
-        "scam-subject": "Your Scotiabank Monthly Statement is Ready to View",
-        "scam-text": "Your latest bank statement is available online. Please log in to your account to view the details. If you encounter any issues, please contact our support team.",
+        "scam-subject": "Tu estado de cuenta mensual de Scotiabank está listo para ser visto",
+        "scam-text": "Tu último estado de cuenta está disponible en línea. Por favor, inicia sesión en tu cuenta para ver los detalles. Si encuentras algún problema, por favor contacta a nuestro equipo de soporte.",
         "answer": false,
         "device": "email",
-        "info": "This is not a scam because the email comes from a legitimate Scotiabank address and does not ask for sensitive information or include suspicious links. Always verify the sender's email address."
+        "info": "Esto no es una estafa. El correo electrónico proviene de una dirección legítima de Scotiabank y no solicita información sensible ni incluye enlaces sospechosos. Siempre verifica la dirección de correo electrónico del remitente."
     },
     {
         "scam-contact": "scotiabank-payment.com",
-        "scam-subject": "Payment Declined: Action Needed",
-        "scam-text": "Your automatic payment of $120.00 was declined. Please update your payment information or contact us if you believe this is an error. scotiabank-payment.com",
+        "scam-subject": "Pago rechazado: Acción necesaria",
+        "scam-text": "Tu pago automático de $120.00 fue rechazado. Por favor, actualiza tu información de pago o contáctanos si crees que esto es un error. scotiabank-payment.com",
         "answer": true,
         "device": "email",
-        "info": "This email is a scam because banks do not request payment updates through email links. Always use the official banking website or app to make changes to your payment information."
+        "info": "Este correo electrónico es una estafa porque los bancos no solicitan actualizaciones de pago a través de enlaces en correos electrónicos. Siempre utiliza el sitio web oficial del banco o la aplicación para realizar cambios en tu información de pago."
     },
     {
         "scam-contact": "scotiabank-claim.com",
-        "scam-subject": "Claim Your Unclaimed Funds Today",
-        "scam-text": "Our records show unclaimed funds in your Scotiabank account. Please visit scotiabank-claim.com to claim them.",
+        "scam-subject": "Reclama tus fondos no reclamados hoy",
+        "scam-text": "Nuestros registros muestran fondos no reclamados en tu cuenta de Scotiabank. Por favor, visita scotiabank-claim.com para reclamarlos.",
         "answer": true,
         "device": "email",
-        "info": "This email is a scam because the message uses urgency to entice you to click on a suspicious link. Legitimate banks would inform you about unclaimed funds through secure channels."
+        "info": "Este correo electrónico es una estafa porque el mensaje usa la urgencia para inducirte a hacer clic en un enlace sospechoso. Los bancos legítimos te informarían sobre fondos no reclamados a través de canales seguros."
     },
     {
         "scam-contact": "info@scotiabank.com",
-        "scam-subject": "Important: Update Required to Continue Using Your Account",
-        "scam-text": "Due to recent updates, we need you to update your account information. You can do this by logging into your account or visiting a branch.",
+        "scam-subject": "Importante: Se requiere actualización para continuar usando tu cuenta",
+        "scam-text": "Debido a actualizaciones recientes, necesitamos que actualices la información de tu cuenta. Puedes hacerlo iniciando sesión en tu cuenta o visitando una sucursal.",
         "answer": false,
         "device": "email",
-        "info": "This is not a scam because the email is from a legitimate Scotiabank address, and the update request is standard practice. Always log in through the official website or app to perform updates."
+        "info": "Esto no es una estafa. El correo electrónico proviene de una dirección legítima de Scotiabank, y la solicitud de actualización es una práctica estándar. Siempre inicia sesión a través del sitio web o la aplicación oficial para realizar actualizaciones."
     },
     {
         "scam-contact": "scotiabank-spending.com",
-        "scam-subject": "Alert: Unusual Spending Detected on Your Scotiabank Account",
-        "scam-text": "We've detected unusual spending on your account. Please review your transactions and report any unauthorized charges by replying to this email or visiting scotiabank-spending.com.",
+        "scam-subject": "Alerta: Se ha detectado gasto inusual en tu cuenta de Scotiabank",
+        "scam-text": "Hemos detectado gasto inusual en tu cuenta. Por favor, revisa tus transacciones y reporta cualquier cargo no autorizado respondiendo a este correo electrónico o visitando scotiabank-spending.com.",
         "answer": true,
         "device": "email",
-        "info": "This email is a scam because it directs you to a suspicious website. A legitimate email would not ask you to reply with sensitive information or visit an unfamiliar link."
+        "info": "Este correo electrónico es una estafa porque te dirige a un sitio web sospechoso. Un correo electrónico legítimo no te pediría que respondas con información sensible o visites un enlace desconocido."
     },
     {
         "scam-contact": "scotiabank-confirm.com",
-        "scam-subject": "Action Required: Confirm Your Recent Scotiabank Transaction",
-        "scam-text": "A transaction of $1,500.00 is pending on your account. Please review it in your online banking portal. If you did not authorize this, contact us immediately or visit scotiabank-confirm.com.",
+        "scam-subject": "Acción requerida: Confirma tu transacción reciente en Scotiabank",
+        "scam-text": "Hay una transacción de $1,500.00 pendiente en tu cuenta. Por favor, revísala en tu portal de banca en línea. Si no la autorizaste, contáctanos de inmediato o visita scotiabank-confirm.com.",
         "answer": true,
         "device": "email",
-        "info": "This is a scam because the message includes a suspicious link and creates a false sense of urgency. Always check your transactions through the official banking app or website."
+        "info": "Esto es una estafa. El mensaje incluye un enlace sospechoso y crea una falsa sensación de urgencia. Siempre verifica tus transacciones a través de la aplicación o el sitio web oficial del banco."
     },
     {
         "scam-contact": "1-800-472-6842",
-        "scam-subject": "Immediate Action Required: Suspicious Activity Detected",
-        "scam-text": "We've detected suspicious activity in your account. Please review your recent transactions by logging in to your account or contacting our security team.",
+        "scam-subject": "Acción inmediata requerida: Se ha detectado actividad sospechosa",
+        "scam-text": "Hemos detectado actividad sospechosa en tu cuenta. Por favor, revisa tus transacciones recientes iniciando sesión en tu cuenta o contactando a nuestro equipo de seguridad.",
         "answer": false,
         "device": "email",
-        "info": "This is not a scam because the email provides a valid phone number and asks you to check your account through official channels. Always verify by contacting the bank directly."
+        "info": "Esto no es una estafa. El correo electrónico proporciona un número de teléfono válido y te pide que revises tu cuenta a través de canales oficiales. Siempre verifica contactando al banco directamente."
     },
     {
         "scam-contact": "scotiabank-prize.com",
-        "scam-subject": "Congratulations! You've Won a Prize",
-        "scam-text": "You've been selected as a winner of our latest sweepstakes! Please reply to this email to claim your prize or visit our promotions page at scotiabank-prize.com.",
+        "scam-subject": "¡Felicitaciones! Has ganado un premio",
+        "scam-text": "Has sido seleccionado como ganador de nuestro último sorteo. Por favor, responde a este correo electrónico para reclamar tu premio o visita nuestra página de promociones en scotiabank-prize.com.",
         "answer": true,
         "device": "email",
-        "info": "This email is a scam because Scotiabank does not run random sweepstakes and would not ask you to claim a prize through an unfamiliar link. Always be cautious of unsolicited prize notifications."
+        "info": "Este correo electrónico es una estafa porque Scotiabank no realiza sorteos al azar y no te pediría que reclames un premio a través de un enlace desconocido. Siempre ten cuidado con notificaciones de premios no solicitados."
     },
     {
         "scam-contact": "Unknown Caller",
         "scam-subject": "",
-        "scam-text": "This is Scotiabank calling to inform you of suspicious activity on your account. Please press 1 to speak with a representative and secure your account immediately.",
+        "scam-text": "Este es un llamado de Scotiabank para informarte sobre actividad sospechosa en tu cuenta. Por favor, presiona 1 para hablar con un representante y asegurar tu cuenta de inmediato.",
         "answer": true,
         "device": "call",
-        "info": "This call is a scam because banks typically do not ask you to press a button to secure your account. They would ask you to contact them directly through their official number."
+        "info": "Esta llamada es una estafa. Los bancos generalmente no te piden que presiones un botón para asegurar tu cuenta. Te pedirían que los contactes directamente a través de su número oficial."
     },
     {
         "scam-contact": "1-800-SCOTIA",
         "scam-subject": "",
-        "scam-text": "Hello Alex, this is Scotiabank. We are calling to confirm a recent transaction of $1,200. If you did not authorize this, please visit your nearest branch.",
+        "scam-text": "Hola Alex, este es Scotiabank. Estamos llamando para confirmar una transacción reciente de $1,200. Si no la autorizaste, por favor visita tu sucursal más cercana.",
         "answer": false,
         "device": "call",
-        "info": "This call is not a scam because it provides the official Scotiabank contact number and asks you to take action by visiting a branch, not by providing information over the phone."
+        "info": "Esta llamada no es una estafa. Proporciona el número de contacto oficial de Scotiabank y te pide que tomes acción visitando una sucursal, no proporcionando información por teléfono."
     },
     {
         "scam-contact": "Unknown Caller",
         "scam-subject": "",
-        "scam-text": "This is Scotiabank. We need to verify your account information to process a pending transaction. Please provide your account number and PIN.",
+        "scam-text": "Este es Scotiabank. Necesitamos verificar la información de tu cuenta para procesar una transacción pendiente. Por favor, proporciona tu número de cuenta y PIN.",
         "answer": true,
         "device": "call",
-        "info": "This call is a scam because banks will never ask you to provide your PIN or full account number over the phone. Always hang up and contact the bank directly using their official number."
+        "info": "Esta llamada es una estafa. Los bancos nunca te pedirán que proporciones tu PIN o número completo de cuenta por teléfono. Siempre cuelga y contacta al banco directamente utilizando su número oficial."
     },
     {
         "scam-contact": "1-800-472-6842",
         "scam-subject": "",
-        "scam-text": "Hello, this is Scotiabank. We noticed some unusual activity on your account and wanted to confirm it with you. Please call us back at 1-800-472-6842 if you have any concerns.",
+        "scam-text": "Hola, este es Scotiabank. Notamos alguna actividad inusual en tu cuenta y queríamos confirmarla contigo. Por favor, llámanos al 1-800-472-6842 si tienes alguna preocupación.",
         "answer": false,
         "device": "call",
-        "info": "This call is not a scam because it provides a valid contact number and does not ask for sensitive information directly. Always verify by calling the official number provided."
+        "info": "Esta llamada no es una estafa. Proporciona un número de contacto válido y no solicita información sensible directamente. Siempre verifica llamando al número oficial proporcionado."
     },
     {
         "scam-contact": "Unknown Caller",
         "scam-subject": "",
-        "scam-text": "Scotiabank is updating its security systems. To keep your account safe, please provide your security answers and password over the phone.",
+        "scam-text": "Scotiabank está actualizando sus sistemas de seguridad. Para mantener tu cuenta segura, por favor proporciona tus respuestas de seguridad y contraseña por teléfono.",
         "answer": true,
         "device": "call",
-        "info": "This call is a scam because banks will never ask for your password or security answers over the phone. Always refuse to provide such information and report the call to your bank."
+        "info": "Esta llamada es una estafa. Los bancos nunca te pedirán tu contraseña o respuestas de seguridad por teléfono. Siempre rehúsa proporcionar dicha información y reporta la llamada a tu banco."
     },
     {
         "scam-contact": "1-800-SCOTIA",
         "scam-subject": "",
-        "scam-text": "Hello, this is Scotiabank. We just wanted to let you know about some updates to your account. No action is needed from your side at this time.",
+        "scam-text": "Hola, este es Scotiabank. Solo queríamos informarte sobre algunas actualizaciones en tu cuenta. No se requiere ninguna acción de tu parte en este momento.",
         "answer": false,
         "device": "call",
-        "info": "This call is not a scam because it is simply an informational call that does not ask for any sensitive information or immediate action."
+        "info": "Esta llamada no es una estafa. Es simplemente una llamada informativa que no solicita ninguna información sensible ni acción inmediata."
     },
     {
         "scam-contact": "Unknown Caller",
         "scam-subject": "",
-        "scam-text": "This is Scotiabank because your account has been locked due to suspicious activity. Please press 2 to unlock your account.",
+        "scam-text": "Este es Scotiabank. Tu cuenta ha sido bloqueada debido a actividad sospechosa. Por favor, presiona 2 para desbloquear tu cuenta.",
         "answer": true,
         "device": "call",
-        "info": "This call is a scam. Legitimate banks do not ask you to press buttons during an automated call to unlock accounts. Always contact the bank directly through their official number."
+        "info": "Esta llamada es una estafa. Los bancos legítimos no te pedirán que presiones botones durante una llamada automatizada para desbloquear cuentas. Siempre contacta al banco directamente a través de su número oficial."
     },
     {
         "scam-contact": "1-800-472-6842",
         "scam-subject": "",
-        "scam-text": "Hello, this is Scotiabank calling to notify you of some recent activity on your account. Please review your recent transactions at your earliest convenience.",
+        "scam-text": "Hola, este es Scotiabank llamando para notificarte sobre alguna actividad reciente en tu cuenta. Por favor, revisa tus transacciones recientes a la mayor brevedad.",
         "answer": false,
         "device": "call",
-        "info": "This call is not a scam because it is a courtesy call that provides a legitimate contact number and does not ask for sensitive information."
+        "info": "Esta llamada no es una estafa. Es una llamada de cortesía que proporciona un número de contacto legítimo y no solicita información sensible."
     },
     {
         "scam-contact": "Unknown Caller",
         "scam-subject": "",
-        "scam-text": "This is Scotiabank. We need to update your account information. Please provide your date of birth and Social Insurance Number to proceed.",
+        "scam-text": "Este es Scotiabank. Necesitamos actualizar la información de tu cuenta. Por favor, proporciona tu fecha de nacimiento y número de seguro social para continuar.",
         "answer": true,
         "device": "call",
-        "info": "This call is a scam because banks will never ask for your Social Insurance Number or other sensitive personal information over the phone. Always refuse and report the call."
+        "info": "Esta llamada es una estafa. Los bancos nunca te pedirán tu número de seguro social u otra información personal sensible por teléfono. Siempre rehúsa y reporta la llamada."
     },
     {
         "scam-contact": "1-800-SCOTIA",
         "scam-subject": "",
-        "scam-text": "Hello Alex, this is Scotiabank. We noticed a large withdrawal from your account. If you did not authorize this, please visit your nearest branch to secure your account.",
+        "scam-text": "Hola Alex, este es Scotiabank. Notamos un retiro grande de tu cuenta. Si no lo autorizaste, por favor visita tu sucursal más cercana para asegurar tu cuenta.",
         "answer": false,
         "device": "call",
-        "info": "This call is not a scam because it provides the official Scotiabank contact number and asks you to take action by visiting a branch, not by providing information over the phone."
+        "info": "Esta llamada no es una estafa. Proporciona el número de contacto oficial de Scotiabank y te pide que tomes acción visitando una sucursal, no proporcionando información por teléfono."
     }
 ];
+
 
 
 const shuffleArray = (array) => {
