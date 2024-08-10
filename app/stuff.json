@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Suspicious Email",
+    "description": "You've received an email asking for your personal information. What do you do?",
+    "correct": "left"
+  },
+  {
+    "title": "Urgent Call",
+    "description": "A caller claims to be from your bank and requests your account details urgently. How do you respond?",
+    "correct": "right"
+  },
+  {
+    "title": "Time Up!",
+    "description": "The game has ended. Thank you for playing!",
+    "correct": null
+  }
+]
