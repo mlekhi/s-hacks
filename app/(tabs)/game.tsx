@@ -4,7 +4,7 @@ import Swiper from 'react-native-deck-swiper';
 import axios from 'axios';
 import GameCard from '../gamecard_email';
 
-const API_KEY = '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'; // Store securely in environment variables
+const API_KEY = ; // Store securely in environment variables
 
 const prompts = [
   'Create a single scenario for a fraud detection game where a scammer is emailing you. Each scenario should include a title, description, and correct swipe direction ("left" or "right"). Format as JSON.',
