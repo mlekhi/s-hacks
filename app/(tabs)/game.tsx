@@ -261,14 +261,16 @@ const shuffledData = shuffleArray([...initialGameData]); // Shuffle the game dat
 const [gameData, setGameData] = useState(shuffledData);
 const [cardsStack, setCardsStack] = useState([]);
 const [points, setPoints] = useState(0);
-const [timeLeft, setTimeLeft] = useState(10);
+const [timeLeft, setTimeLeft] = useState(60);
 const [isGameOver, setIsGameOver] = useState(false);
+const [flashColor, setFlashColor] = useState('#ffffff'); // Default background color
+const [swipeCount, setSwipeCount] = useState(0); 
 
 useEffect(() => {
   // Pre-create the cards in a stack with the info card after each question card
   const createdCardsStack = gameData.flatMap((card, index) => [
     <GameCard key={`game-${index}`} card={card} />,
-    <InfoCard key={`info-${index}`} info={card.info} />
+    <InfoCard key={`info-${index}`} info={card.info}/>
   ]);
   setCardsStack(createdCardsStack);
 }, [gameData]);
@@ -287,21 +289,33 @@ useEffect(() => {
 
 const handleSwipe = (cardIndex, direction) => {
   if (isGameOver) return; // Prevent swipes if game is over
+  setSwipeCount((prevCount) => prevCount + 1); // Increment swipe count
 
-  // Adjusted to account for info cards in between
-  const actualCardIndex = Math.floor(cardIndex / 2);
-  const card = gameData[actualCardIndex];
-  const isCorrectSwipe =
-    (direction === 'right' && card.answer === true) ||
-    (direction === 'left' && card.answer === false);
+  if (swipeCount % 2 === 0) {
 
-  if (isCorrectSwipe) {
-    setPoints((prevPoints) => prevPoints + 10); // Award 10 points for correct answer
-  } else {
-    setPoints((prevPoints) => prevPoints - 5); // Deduct 5 points for wrong answer
-  }
+    // Adjusted to account for info cards in between
+    const actualCardIndex = Math.floor(cardIndex / 2);
+    const card = gameData[actualCardIndex];
+    const isCorrectSwipe =
+      (direction === 'right' && card.answer === true) ||
+      (direction === 'left' && card.answer === false);
 
-  console.log(`Swiped card at index ${cardIndex}, Direction: ${direction}`);
+    if (isCorrectSwipe) {
+      setPoints((prevPoints) => prevPoints + 10); // Award 10 points for correct answer
+      triggerFlash('#ABE6A1'); // Green flash for correct
+    } else {
+      setPoints((prevPoints) => prevPoints - 5); // Deduct 5 points for wrong answer
+      triggerFlash('#ED9393'); // Red flash for incorrect
+    }
+
+    console.log(`Swiped card at index ${cardIndex}, Direction: ${direction}`);}
+  };
+
+const triggerFlash = (color) => {
+  setFlashColor(color);
+  setTimeout(() => {
+    setFlashColor('#ffffff'); // Reset to default after 200ms
+  }, 300);
 };
 
 const restartGame = () => {
@@ -310,10 +324,11 @@ const restartGame = () => {
   setPoints(0); // Reset points
   setTimeLeft(60); // Reset timer
   setIsGameOver(false); // Reset game over state
+  setSwipeCount(0); // Reset swipe count
 };
 
 return (
-  <View style={styles.container}>
+  <View style={[styles.container, { backgroundColor: flashColor }]}>
     <Text style={styles.timer}>Time Left: {timeLeft}s</Text>
     <Text style={styles.points}>Points: {points}</Text>
     {isGameOver ? (
