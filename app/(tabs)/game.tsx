@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { TouchableOpacity, StyleSheet, View, Text, Button } from 'react-native';
 import Swiper from 'react-native-deck-swiper';
 import GameCard from '../gamecard';
+import InfoCard from '../infocard';
 
 const Game = () => {
   const initialGameData = [
@@ -255,62 +256,76 @@ const shuffleArray = (array) => {
 
   return array;
 };
-  
+
+const shuffledData = shuffleArray([...initialGameData]); // Shuffle the game data
+const [gameData, setGameData] = useState(shuffledData);
+const [cardsStack, setCardsStack] = useState([]);
+const [points, setPoints] = useState(0);
+const [timeLeft, setTimeLeft] = useState(10);
+const [isGameOver, setIsGameOver] = useState(false);
+
+useEffect(() => {
+  // Pre-create the cards in a stack with the info card after each question card
+  const createdCardsStack = gameData.flatMap((card, index) => [
+    <GameCard key={`game-${index}`} card={card} />,
+    <InfoCard key={`info-${index}`} info={card.info} />
+  ]);
+  setCardsStack(createdCardsStack);
+}, [gameData]);
+
+useEffect(() => {
+  if (timeLeft <= 0) {
+    setIsGameOver(true);
+    return;
+  }
+  const timer = setInterval(() => {
+    setTimeLeft((prev) => prev - 1);
+  }, 1000);
+
+  return () => clearInterval(timer);
+}, [timeLeft]);
+
+const handleSwipe = (cardIndex, direction) => {
+  if (isGameOver) return; // Prevent swipes if game is over
+
+  // Adjusted to account for info cards in between
+  const actualCardIndex = Math.floor(cardIndex / 2);
+  const card = gameData[actualCardIndex];
+  const isCorrectSwipe =
+    (direction === 'right' && card.answer === true) ||
+    (direction === 'left' && card.answer === false);
+
+  if (isCorrectSwipe) {
+    setPoints((prevPoints) => prevPoints + 10); // Award 10 points for correct answer
+  } else {
+    setPoints((prevPoints) => prevPoints - 5); // Deduct 5 points for wrong answer
+  }
+
+  console.log(`Swiped card at index ${cardIndex}, Direction: ${direction}`);
+};
+
+const restartGame = () => {
   const shuffledData = shuffleArray([...initialGameData]); // Shuffle and reset game data
-  const [gameData, setGameData] = useState(shuffledData);
-  const [points, setPoints] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(10);
-  const [isGameOver, setIsGameOver] = useState(false);
+  setGameData(shuffledData); // Reset game data
+  setPoints(0); // Reset points
+  setTimeLeft(60); // Reset timer
+  setIsGameOver(false); // Reset game over state
+};
 
-  useEffect(() => {
-    if (timeLeft <= 0) {
-      setIsGameOver(true);
-      return;
-    }
-    const timer = setInterval(() => {
-      setTimeLeft(prev => prev - 1);
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [timeLeft]);
-
-  const handleSwipe = (cardIndex: number, direction: string) => {
-    if (isGameOver) return; // Prevent swipes if game is over
-
-    const card = gameData[cardIndex];
-    const isCorrectSwipe = (direction === 'right' && card.answer === true) || (direction === 'left' && card.answer === false);
-
-    if (isCorrectSwipe) {
-      setPoints(prevPoints => prevPoints + 10); // Award 10 points for correct answer
-    } else {
-      setPoints(prevPoints => prevPoints - 5); // Deduct 5 points for wrong answer
-    }
-
-    console.log(`Swiped card at index ${cardIndex}, Direction: ${direction}`);
-  };
-
-  const restartGame = () => {
-    const shuffledData = shuffleArray([...initialGameData]); // Shuffle and reset game data
-    setGameData(shuffledData); // Reset game data
-    setPoints(0); // Reset points
-    setTimeLeft(10); // Reset timer
-    setIsGameOver(false); // Reset game over state
-  };
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.timer}>Time Left: {timeLeft}s</Text>
-      <Text style={styles.points}>Points: {points}</Text>
-      {isGameOver ? (
-        <View style={styles.gameOverContainer}>
-          <Text style={styles.gameOver}>Game Over!</Text>
-          <Button title="Restart Game" onPress={restartGame} />
-        </View>
-      ) : (
+return (
+  <View style={styles.container}>
+    <Text style={styles.timer}>Time Left: {timeLeft}s</Text>
+    <Text style={styles.points}>Points: {points}</Text>
+    {isGameOver ? (
+      <View style={styles.gameOverContainer}>
+        <Text style={styles.gameOver}>Game Over!</Text>
+        <Button title="Restart Game" onPress={restartGame} />
+      </View>
+    ) : (
       <View style={styles.swiperContainer}>
         <Swiper
-          cards={gameData}
-          renderCard={(card) => <GameCard card={card} />}
+          cards={cardsStack}
+          renderCard={(card) => card}
           onSwipedLeft={(cardIndex) => handleSwipe(cardIndex, 'left')}
           onSwipedRight={(cardIndex) => handleSwipe(cardIndex, 'right')}
           stackSize={3}
@@ -318,52 +333,52 @@ const shuffleArray = (array) => {
           backgroundColor={'#f0f0f0'}
           verticalSwipe={false}
         />
-        </View>
-      )}
-    </View>
-  );
+      </View>
+    )}
+  </View>
+);
 };
 
 const styles = StyleSheet.create({
-  swiperContainer: {
-    position: 'absolute',
-    top: 25,
-    left: 0,
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-  },
-  timer: {
-    position: 'absolute',
-    top: 40,
-    right: 20,
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#ff0000',
-    zIndex: 1, // Ensure it appears above other components
-  },
-  points: {
-    position: 'absolute',
-    top: 40,
-    left: 20,
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#000000',
-    zIndex: 1, // Ensure it appears above other components
-  },
-  gameOverContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  gameOver: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#ff0000',
-    marginBottom: 20,
-  },
+swiperContainer: {
+  position: 'absolute',
+  top: 25,
+  left: 0,
+},
+container: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '#ffffff',
+},
+timer: {
+  position: 'absolute',
+  top: 40,
+  right: 20,
+  fontSize: 20,
+  fontWeight: 'bold',
+  color: '#ff0000',
+  zIndex: 1, // Ensure it appears above other components
+},
+points: {
+  position: 'absolute',
+  top: 40,
+  left: 20,
+  fontSize: 20,
+  fontWeight: 'bold',
+  color: '#000000',
+  zIndex: 1, // Ensure it appears above other components
+},
+gameOverContainer: {
+  justifyContent: 'center',
+  alignItems: 'center',
+},
+gameOver: {
+  fontSize: 24,
+  fontWeight: 'bold',
+  color: '#ff0000',
+  marginBottom: 20,
+},
 });
 
 export default Game;
